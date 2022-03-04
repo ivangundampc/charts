@@ -25,5 +25,7 @@ dependencies:
     condition: mariadb.enabled
 annotations:
   artifacthub.io/changes: |
-    - kind: fixed
-      description: Fixed database host to match mariadb-svc
+    - kind: changed
+      description: Upgraded `common` chart dependency to version `4.3.0`.
+    - kind: changed
+      description: Upgraded `mariadb` chart dependency to version `10.3.7`.
