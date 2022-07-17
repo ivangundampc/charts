@@ -1,6 +1,6 @@
 # mealie
 
-![Version: 4.0.0](https://img.shields.io/badge/Version-4.0.0-informational?style=flat-square) ![AppVersion: v0.5.6](https://img.shields.io/badge/AppVersion-v0.5.6-informational?style=flat-square)
+![Version: 5.0.1](https://img.shields.io/badge/Version-5.0.1-informational?style=flat-square) ![AppVersion: v1.0.0beta-2](https://img.shields.io/badge/AppVersion-v1.0.0beta--2-informational?style=flat-square)
 
 Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family.
 
@@ -18,8 +18,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 10.14.4 |
-| https://library-charts.k8s-at-home.com | common | 4.3.0 |
+| https://library-charts.k8s-at-home.com | common | 4.4.2 |
 
 ## TL;DR
 
@@ -76,20 +75,24 @@ N/A
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| env | object | See below | environment variables. See [image docs](https://hay-kot.github.io/mealie/documentation/getting-started/install/#env-variables) for more details. |
-| env.DB_ENGINE | string | `"sqlite"` | Set the application database type |
+| api.env | object | See below | environment variables. See [backend config](https://nightly.mealie.io/documentation/getting-started/installation/backend-config/) for more details. |
+| api.env.TZ | string | `"UTC"` | Set the container timezone |
+| api.image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
+| api.image.repository | string | `"hkotel/mealie"` | image repository |
+| api.image.tag | string | `"api-v1.0.0beta-2"` | image tag |
+| api.volumeMounts | list | See below | volume mounts. Name should match a key in .Values.persistence |
+| env | object | See below | environment variables. See [frontend config](https://nightly.mealie.io/documentation/getting-started/installation/frontend-config/) for more details. |
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | image.repository | string | `"hkotel/mealie"` | image repository |
-| image.tag | string | chart.appVersion | image tag |
+| image.tag | string | `"frontend-v1.0.0beta-2"` | image tag |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
-| postgresql | object | See values.yaml | Enable and configure postgresql database subchart under this key.    For more options see [postgresql chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/postgresql) |
 | service | object | See values.yaml | Configures service settings for the chart. |
 
 ## Changelog
 
-### Version 4.0.0
+### Version 5.0.1
 
 #### Added
 
@@ -97,12 +100,11 @@ N/A
 
 #### Changed
 
-* Upgraded app version `v0.5.6`.
-* Removed deprecated DB_TYPE environment variable in favour of DB_ENGINE.
+N/A
 
 #### Fixed
 
-N/A
+* Fixed loading API environment variables.
 
 ### Older versions
 
